@@ -154,7 +154,7 @@ my $presence = WWW::Shorten::Akari->new;
 
 =head2 makeashorterlink($url)
 
-L<Makes a shorter link|http://tvtropes.org/pmwiki/pmwiki.php/Main/ExactlyWhatItSaysOnTheTin>
+L<Makes a shorter link|http://tvtropes.org/pmwiki/pmwiki.php/Main/ExactlyWhatItSaysOnTheTin>.
 
 =cut
 sub makeashorterlink($) {
@@ -164,7 +164,7 @@ sub makeashorterlink($) {
 =head2 makealongerlink($url)
 
 L<The opposite of|http://tvtropes.org/pmwiki/pmwiki.php/Main/CaptainObvious>
-L</makeashorterlink($url)>
+L</makeashorterlink($url)>.
 
 =cut
 sub makealongerlink($) {
@@ -175,6 +175,6 @@ sub makealongerlink($) {
 
 =head1 SOURCE CODE
 
-https://github.com/Kovensky/WWW-Shorten-Akari
+L<https://github.com/Kovensky/WWW-Shorten-Akari>
 
 =cut
