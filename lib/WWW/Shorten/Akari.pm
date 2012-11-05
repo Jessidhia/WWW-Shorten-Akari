@@ -174,7 +174,7 @@ sub lengthen {
 
 =for Pod::Coverage lenghten
 =cut
-use version;
+use version 0.77;
 croak "Remove the deprecated 'lenghten'"
     if $WWW::Shorten::Akari::VERSION >= qv('v2.0.0');
 sub lenghten {
