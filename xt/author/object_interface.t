@@ -24,6 +24,6 @@ is $presence->short_link($long), $short, "'short_link' alias works";
 is $presence->makeashorterlink($long), $short, "'makeashortlink' alias works";
 
 is $presence->extract($short), $long, "'extract' alias works";
-is $presence->lenghten($short), $long, "'lenghten' alias works";
+is $presence->lengthen($short), $long, "'lengthen' alias works";
 is $presence->long_link($short), $long, "'long_link' alias works";
 is $presence->makealongerlink($short), $long, "'makealonglink' alias works";

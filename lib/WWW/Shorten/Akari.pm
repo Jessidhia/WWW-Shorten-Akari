@@ -134,9 +134,9 @@ On failure, or if C<$url> is false, or if the C<$url> isn't
 a shortened link from L<http://waa.ai>, C<carp>s and returns
 false.
 
-Aliases: C<lenghten>, C<long_link>, C<extract>, C<makealongerlink>
+Aliases: C<lengthen>, C<long_link>, C<extract>, C<makealongerlink>
 
-=for Pod::Coverage lenghten long_link extract
+=for Pod::Coverage lengthen long_link extract
 
 =cut
 sub increase {
@@ -160,7 +160,18 @@ sub _check_url {
     return scalar $url =~ m{^http://waa\.ai/[^.]+$};
 }
 
+sub lengthen {
+    my ($self, @args) = @_;
+    return $self->increase(@args);
+}
+
+=for Pod::Coverage lenghten
+=cut
+use version;
+croak "Remove the deprecated 'lenghten'"
+    if $WWW::Shorten::Akari::VERSION >= qv('v2.0.0');
 sub lenghten {
+    carp "Don't use lenghten, use lengthen";
     my ($self, @args) = @_;
     return $self->increase(@args);
 }
