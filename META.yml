@@ -1,0 +1,30 @@
+---
+abstract: 'Reduces the presence of URLs using http://waa.ai'
+author:
+  - 'Kovensky <diogomfranco@gmail.com>'
+build_requires:
+  Module::Build: 0.3601
+  Test::More: 0
+configure_requires:
+  ExtUtils::MakeMaker: 6.30
+  Module::Build: 0.3601
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 4.300028, CPAN::Meta::Converter version 2.120921'
+license: open_source
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: WWW-Shorten-Akari
+requires:
+  Carp: 0
+  Encode: 0
+  Exporter: 0
+  Scalar::Util: 0
+  WWW::Shorten::generic: 0
+  constant: 0
+  parent: 0
+  perl: v5.8.0
+  strict: 0
+  utf8: 0
+  warnings: 0
+version: v1.0.0
