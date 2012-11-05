@@ -1,5 +1,6 @@
 {{$NEXT}}
           Minor test fixes.
+          Change license to MIT (identical to FreeBSD, liked by CPAN)
 
 v1.0.0    2012-11-05 11:33:21 UTC
 
