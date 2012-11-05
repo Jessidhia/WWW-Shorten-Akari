@@ -14,8 +14,8 @@ package WWW::Shorten::Akari;
     my $short = $presence->reduce("http://google.com");
     my $long  = $presence->increase($short);
 
-    $short = makeashortlink("http://google.com");
-    $long  = makealonglink($short);
+    $short = makeashorterlink("http://google.com");
+    $long  = makealongerlink($short);
 
 =head1 DESCRIPTION
 
@@ -24,6 +24,17 @@ This module has both an object interface and a function interface
 as defined by L<WWW::Shorten>. This module is compatible with
 L<WWW::Shorten::Simple> and, since L<http://waa.ai> always returns
 the same short URL for a given long URL, may be memoized.
+
+=head1 NOTES
+
+WWW::Shorten::Akari should preferrably be C<use>d with an empty list
+as arguments, like C<use WWW::Shorten::Akari qw{};>, and then used
+through the OO API.
+
+If no arguments are given to C<use>, WWW::Shorten::Akari is imported with
+':default' by default, which imports C<makeashorterlink> and
+C<makealongerlink> as per WWW::Shorten conventions. If the module is C<use>d
+with ':short', the functions C<short_link> and C<long_link> are imported.
 
 =cut
 
@@ -168,6 +179,8 @@ my $presence = WWW::Shorten::Akari->new;
 
 L<Makes a shorter link|http://tvtropes.org/pmwiki/pmwiki.php/Main/ExactlyWhatItSaysOnTheTin>.
 
+Alias: C<short_link>
+
 =cut
 # Aliases to reduce when called as method; calls reduce on $presence when called as function
 sub makeashorterlink($) {
@@ -180,6 +193,8 @@ sub makeashorterlink($) {
 
 L<The opposite of|http://tvtropes.org/pmwiki/pmwiki.php/Main/CaptainObvious>
 L</makeashorterlink($url)>.
+
+Alias: C<long_link>
 
 =cut
 # Aliases to increase when called as method; calls increase on $presence when called as function
