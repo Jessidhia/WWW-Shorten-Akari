@@ -16,7 +16,6 @@ install:
    - export PERL_CPANM_OPT='--mirror http://cpan.metacpan.org/ --mirror http://search.cpan.org/CPAN '$PERL_CPANM_OPT
    - cpanm --verbose -n DAVECROSS/WWW-Shorten-2.00.tar.gz
    - cpanm --verbose CORION/parent-0.215.tar.gz
-   - cpanm --verbose JPEACOCK/version-0.7701.tar.gz
    - cpanm --verbose DAGOLDEN/Module-Build-0.3601.tar.gz
    - cpanm --verbose DAGOLDEN/Module-Build-0.3601.tar.gz
    - cpanm --verbose MSCHWERN/Test-Simple-0.94.tar.gz
