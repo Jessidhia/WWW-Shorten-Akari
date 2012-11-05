@@ -6,7 +6,7 @@ use warnings;
 
 use Test::More tests => 9;
 
-BEGIN { use_ok("WWW::Shorten::Akari", qw{}) }
+BEGIN { require_ok("WWW::Shorten::Akari") }
 
 diag "This test carps a lot";
 note "These tests aren't supposed to access the Internet";
