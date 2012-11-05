@@ -1,0 +1,27 @@
+#! /usr/bin/env perl
+
+use v5.8;
+use strict;
+use warnings;
+
+use Test::More tests => 11;
+
+BEGIN { use_ok("WWW::Shorten::Akari", qw{}) }
+
+use constant TEST_URL_LONG  => "http://google.com";
+use constant TEST_URL_SHORT => "http://waa.ai/4";
+
+note "These tests require a working Internet connection";
+
+ok my $presence = WWW::Shorten::Akari->new, "Can instantiate Akari";
+ok my $short = $presence->reduce(TEST_URL_LONG), "Can reduce presence of URLs";
+is $short, TEST_URL_SHORT, "The reduced presence was reduced as expected";
+ok my $long = $presence->increase($short), "The presence can be increased";
+is $long, TEST_URL_LONG, "The increased presence is as it was before reduction";
+
+is $presence->shorten($long), $short, "'shorten' alias works";
+is $presence->short_link($long), $short, "'short_link' alias works";
+
+is $presence->extract($short), $long, "'extract' alias works";
+is $presence->lenghten($short), $long, "'lenghten' alias works";
+is $presence->long_link($short), $long, "'long_link' alias works";
