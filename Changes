@@ -1,4 +1,6 @@
 {{$NEXT}}
+
+v0.2      2012-11-05 03:36:38 UTC
           Override WWW::Shorten::generic's import with Exporter's import that DTRT.
           Allows calling ->makeashorterlink and ->makealongerlink in the object interface.
           Supports calling short_link and long_link in the function interface.
