@@ -2,7 +2,7 @@
           Override WWW::Shorten::generic's import with Exporter's import that DTRT.
           Allows calling ->makeashorterlink and ->makealongerlink in the object interface.
           Supports calling short_link and long_link in the function interface.
-          Fixes POD typos.
+          Fixes POD typos, update POD to match changes.
 
 v0.1      2012-11-05 01:48:32 UTC
           First release.
