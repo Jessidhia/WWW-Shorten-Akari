@@ -5,6 +5,7 @@ use utf8;
 
 package WWW::Shorten::Akari;
 # ABSTRACT: Reduces the presence of URLs using http://waa.ai
+# VERSION
 
 =head1 SYNOPSIS
 
