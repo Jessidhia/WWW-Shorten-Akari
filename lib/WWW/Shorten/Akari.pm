@@ -27,13 +27,33 @@ the same short URL for a given long URL, may be memoized.
 
 =cut
 
-use base qw{WWW::Shorten::generic Exporter};
-our @EXPORT = qw{makeashorterlink makealongerlink};
+use parent qw{Exporter WWW::Shorten::generic};
+our @EXPORT      = qw{makeashorterlink makealongerlink};
+our @EXPORT_OK   = qw{short_link long_link};
+our %EXPORT_TAGS = (
+    # not redundant; ":default" is part of WWW::Shorten::generic import API
+    default => [@EXPORT],
+    short   => [@EXPORT_OK],
+);
+
+# Workaround for `use WWW::Shorten 'Akari'`.
+# Similar to the hack used within WWW::Shorten::generic with their
+# custom-implemented `import` method that doesn't respect empty
+# import lists.
+sub import {
+    my ($package) = caller;
+    WWW::Shorten::Akari->export_to_level(
+        $package eq 'WWW::Shorten' ? 2 : 1,
+        @_);
+}
+=for Pod::Coverage import
+=cut
 
 use constant API_URL => q{http://waa.ai/api.php};
 
 use Carp;
 use Encode qw{};
+use Scalar::Util qw{blessed};
 
 =method new
 
@@ -62,7 +82,7 @@ Reduces the presence of the C<$url>. Returns the shortened URL.
 
 On failure, or if C<$url> is false, C<carp>s and returns false.
 
-Aliases: C<shorten>, C<short_link>
+Aliases: C<shorten>, C<short_link>, C<makeashorterlink>
 
 =for Pod::Coverage shorten short_link
 
@@ -94,11 +114,6 @@ sub shorten {
     return $self->reduce(@args);
 }
 
-sub short_link {
-    my ($self, @args) = @_;
-    return $self->reduce(@args);
-}
-
 =method increase($url)
 
 Increases the presence of the C<$url>. Returns the original URL.
@@ -107,7 +122,7 @@ On failure, or if C<$url> is false, or if the C<$url> isn't
 a shortened link from L<http://waa.ai>, C<carp>s and returns
 false.
 
-Aliases: C<lenghten>, C<long_link>, C<extract>
+Aliases: C<lenghten>, C<long_link>, C<extract>, C<makealongerlink>
 
 =for Pod::Coverage lenghten long_link extract
 
@@ -138,16 +153,12 @@ sub lenghten {
     return $self->increase(@args);
 }
 
-sub long_link {
-    my ($self, @args) = @_;
-    return $self->increase(@args);
-}
-
 sub extract {
     my ($self, @args) = @_;
     return $self->increase(@args);
 }
 
+# Used by the functions when called as functions
 my $presence = WWW::Shorten::Akari->new;
 
 =head1 FUNCTIONS
@@ -157,8 +168,11 @@ my $presence = WWW::Shorten::Akari->new;
 L<Makes a shorter link|http://tvtropes.org/pmwiki/pmwiki.php/Main/ExactlyWhatItSaysOnTheTin>.
 
 =cut
+# Aliases to reduce when called as method; calls reduce on $presence when called as function
 sub makeashorterlink($) {
-    return $presence->reduce(@_);
+    my $self = shift;
+    return $self->reduce(shift) if blessed($self) && $self->isa(__PACKAGE__);
+    return $presence->reduce($self);
 }
 
 =head2 makealongerlink($url)
@@ -167,8 +181,19 @@ L<The opposite of|http://tvtropes.org/pmwiki/pmwiki.php/Main/CaptainObvious>
 L</makeashorterlink($url)>.
 
 =cut
+# Aliases to increase when called as method; calls increase on $presence when called as function
 sub makealongerlink($) {
-    return $presence->increase(@_);
+    my $self = shift;
+    return $self->increase(shift) if blessed($self) && $self->isa(__PACKAGE__);
+    return $presence->increase($self);
+}
+
+sub short_link($) { # merely redirects call, thus ignores prototypes
+    return &makeashorterlink(@_);
+}
+
+sub long_link($) { # merely redirects call, thus ignores prototypes
+    return &makealongerlink(@_);
 }
 
 1;

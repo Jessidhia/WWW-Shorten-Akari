@@ -4,7 +4,7 @@ use v5.8;
 use strict;
 use warnings;
 
-use Test::More tests => 11;
+use Test::More tests => 13;
 
 BEGIN { use_ok("WWW::Shorten::Akari", qw{}) }
 
@@ -21,7 +21,9 @@ is $long, TEST_URL_LONG, "The increased presence is as it was before reduction";
 
 is $presence->shorten($long), $short, "'shorten' alias works";
 is $presence->short_link($long), $short, "'short_link' alias works";
+is $presence->makeashorterlink($long), $short, "'makeashortlink' alias works";
 
 is $presence->extract($short), $long, "'extract' alias works";
 is $presence->lenghten($short), $long, "'lenghten' alias works";
 is $presence->long_link($short), $long, "'long_link' alias works";
+is $presence->makealongerlink($short), $long, "'makealonglink' alias works";
