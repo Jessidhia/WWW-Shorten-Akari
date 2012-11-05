@@ -10,7 +10,7 @@ package WWW::Shorten::Akari;
 
     use WWW::Shorten::Akari;
 
-    my $presence = WWW::Shorter::Akari->new;
+    my $presence = WWW::Shorten::Akari->new;
     my $short = $presence->reduce("http://google.com");
     my $long  = $presence->increase($short);
 
