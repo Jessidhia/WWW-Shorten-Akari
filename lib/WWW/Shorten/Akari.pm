@@ -172,3 +172,9 @@ sub makealongerlink($) {
 }
 
 1;
+
+=head1 SOURCE CODE
+
+https://github.com/Kovensky/WWW-Shorten-Akari
+
+=cut
