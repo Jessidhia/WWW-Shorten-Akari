@@ -134,7 +134,7 @@ On failure, or if C<$url> is false, or if the C<$url> isn't
 a shortened link from L<http://waa.ai>, C<carp>s and returns
 false.
 
-Aliases: C<lengthen>, C<long_link>, C<extract>, C<makealongerlink>
+Aliases: C<unshorten>, C<lengthen>, C<long_link>, C<extract>, C<makealongerlink>
 
 =for Pod::Coverage lengthen long_link extract
 
@@ -158,6 +158,11 @@ sub increase {
 sub _check_url {
     my ($self, $url) = @_;
     return scalar $url =~ m{^http://waa\.ai/[^.]+$};
+}
+
+sub unshorten {
+    my ($self, @args) = @_;
+    return $self->increase(@args);
 }
 
 sub lengthen {
