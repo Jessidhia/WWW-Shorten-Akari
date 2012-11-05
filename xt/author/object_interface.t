@@ -6,7 +6,7 @@ use warnings;
 
 use Test::More tests => 13;
 
-BEGIN { use_ok("WWW::Shorten::Akari", qw{}) }
+BEGIN { require_ok("WWW::Shorten::Akari") }
 
 use constant TEST_URL_LONG  => "http://google.com";
 use constant TEST_URL_SHORT => "http://waa.ai/4";
