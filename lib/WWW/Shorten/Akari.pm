@@ -39,7 +39,7 @@ with ':short', the functions C<short_link> and C<long_link> are imported.
 
 =cut
 
-use WWW::Shorten 3.00 qw{};
+use WWW::Shorten 2.00 qw{};
 use parent qw{Exporter WWW::Shorten::generic};
 # must be exported by default; part of WWW::Shorten API
 our @EXPORT      = qw{makeashorterlink makealongerlink};
