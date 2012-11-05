@@ -28,10 +28,11 @@ the same short URL for a given long URL, may be memoized.
 =cut
 
 use parent qw{Exporter WWW::Shorten::generic};
+# must be exported by default; part of WWW::Shorten API
 our @EXPORT      = qw{makeashorterlink makealongerlink};
 our @EXPORT_OK   = qw{short_link long_link};
 our %EXPORT_TAGS = (
-    # not redundant; ":default" is part of WWW::Shorten::generic import API
+    # not redundant; ":default" is part of the WWW::Shorten::generic import API
     default => [@EXPORT],
     short   => [@EXPORT_OK],
 );
@@ -42,7 +43,7 @@ our %EXPORT_TAGS = (
 # import lists.
 sub import {
     my ($package) = caller;
-    WWW::Shorten::Akari->export_to_level(
+    __PACKAGE__->export_to_level(
         $package eq 'WWW::Shorten' ? 2 : 1,
         @_);
 }
