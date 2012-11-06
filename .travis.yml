@@ -14,11 +14,7 @@ install:
    - export RELEASE_TESTING=1 AUTOMATED_TESTING=1 AUTHOR_TESTING=1 HARNESS_OPTIONS=j10:c HARNESS_TIMER=1
    - export OLD_CPANM_OPT=$PERL_CPANM_OPT
    - export PERL_CPANM_OPT='--mirror http://cpan.metacpan.org/ --mirror http://search.cpan.org/CPAN '$PERL_CPANM_OPT
-   - cpanm --verbose -n DAVECROSS/WWW-Shorten-2.00.tar.gz
-   - cpanm --verbose CORION/parent-0.215.tar.gz
-   - cpanm --verbose DAGOLDEN/Module-Build-0.3601.tar.gz
-   - cpanm --verbose DAGOLDEN/Module-Build-0.3601.tar.gz
-   - cpanm --verbose MSCHWERN/Test-Simple-0.94.tar.gz
+   - cpanm --verbose -n DAVECROSS/WWW-Shorten-2.00.tar.gz CORION/parent-0.215.tar.gz DAGOLDEN/Module-Build-0.3601.tar.gz MSCHWERN/Test-Simple-0.94.tar.gz
    - export PERL_CPANM_OPT=$OLD_CPANM_OPT
 script:
    - dzil smoke --release --author
