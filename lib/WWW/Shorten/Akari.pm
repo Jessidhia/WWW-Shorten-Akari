@@ -137,7 +137,7 @@ false.
 
 Aliases: C<unshorten>, C<lengthen>, C<long_link>, C<extract>, C<makealongerlink>
 
-=for Pod::Coverage lengthen long_link extract
+=for Pod::Coverage unshorten lengthen long_link extract
 
 =cut
 sub increase {
