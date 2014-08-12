@@ -62,7 +62,7 @@ sub import {
 =for Pod::Coverage import
 =cut
 
-use constant API_URL => q{http://waa.ai/api.php};
+use constant API_URL => q{http://api.waa.ai/};
 
 use Carp;
 use Encode qw{};

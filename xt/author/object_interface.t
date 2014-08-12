@@ -4,12 +4,12 @@ use v5.8;
 use strict;
 use warnings;
 
-use Test::More tests => 13;
+use Test::More tests => 14;
 
 BEGIN { require_ok("WWW::Shorten::Akari") }
 
 use constant TEST_URL_LONG  => "http://google.com";
-use constant TEST_URL_SHORT => "http://waa.ai/4";
+use constant TEST_URL_SHORT => "http://waa.ai/AvT";
 
 note "These tests require a working Internet connection";
 
